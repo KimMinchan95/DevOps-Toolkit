@@ -1,0 +1,11 @@
+{
+  "name": "devops-toolkit",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@11.3.0",
+  "scripts": {
+    "dev": "pnpm --filter @devops-toolkit/web dev",
+    "build": "pnpm --filter @devops-toolkit/web build",
+    "preview": "pnpm --filter @devops-toolkit/web preview"
+  }
+}
