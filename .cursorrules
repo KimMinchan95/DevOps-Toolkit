@@ -1,0 +1,20 @@
+When generating a Git commit message for this repository, follow these rules exactly.
+
+- Write one subject line only. Do not add a body.
+- Format: `type: message`
+- The type is lowercase. Put exactly one space after the colon.
+- The message is Korean and briefly says why the change was made.
+- Allowed types only:
+  - feat: a user-visible feature
+  - chor: config, dependencies, or build work that is not a feature
+  - fix: a bug fix
+  - refactor: a structure change that keeps the same behavior
+  - docs: documentation
+  - style: formatting or visual style
+  - test: tests
+- Do not use `Feat:`, `feat(scope):`, `chore:`, or an English subject.
+
+Examples:
+feat: 테마와 언어 설정을 저장해 다시 열어도 유지되게 함
+chor: TypeScript 6에서 폐기된 baseUrl 설정을 제거함
+fix: 새로고침 때 저장된 테마가 깜빡이지 않게 함
