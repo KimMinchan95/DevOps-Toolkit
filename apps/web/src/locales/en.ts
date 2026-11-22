@@ -1,0 +1,42 @@
+import type { LocaleCatalog } from "./types";
+
+export const en = {
+  shell: {
+    homeLabel: "DevOps Toolkit home",
+    appearance: "Appearance",
+    language: "Language",
+    system: "System default",
+    light: "Light",
+    dark: "Dark",
+    korean: "한국어",
+    english: "English",
+    privacy: "Runs locally in your browser",
+  },
+  home: {
+    documentTitle: "DevOps Toolkit",
+    eyebrow: "A SMALL WORKSPACE FOR EVERYDAY DEVELOPMENT",
+    title: "DevOps Toolkit",
+    description: "The essentials, close at hand.",
+    ready: "JSON Formatter is ready to use.",
+    open: "Open JSON Formatter",
+    next: "Unix Timestamp and UUID Generator are next.",
+  },
+  jsonFormatter: {
+    documentTitle: "JSON Formatter · DevOps Toolkit",
+    eyebrow: "LOCAL JSON TOOL",
+    title: "JSON Formatter",
+    description: "Make JSON readable, or pack it into one line.",
+    format: "Format",
+    minify: "Minify",
+    copy: "Copy",
+    clear: "Clear",
+    placeholder: "Paste JSON here",
+    label: "JSON input",
+    empty: "Paste JSON first.",
+    formatted: "Formatted.",
+    minified: "Minified.",
+    copied: "Copied.",
+    copyFailed: "Couldn't copy.",
+    invalid: "Check line {line}, column {column}.",
+  },
+} satisfies LocaleCatalog;

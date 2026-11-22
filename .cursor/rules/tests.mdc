@@ -1,0 +1,24 @@
+---
+description: 동작이 있는 코드에는 Vitest 테스트를 둔다
+alwaysApply: true
+---
+
+# Tests
+
+동작이 있는 코드를 추가하거나 바꿀 때 Vitest 테스트를 같은 폴더의 `*.test.ts` 또는 `*.test.tsx`에 둔다. 테스트 없는 동작 변경은 끝내지 않는다. 실행은 저장소 루트의 `pnpm test`다.
+
+- 순수 함수와 스토어는 입력, 반환값, 저장된 결과를 검증한다.
+- 페이지와 컴포넌트는 사용자가 보는 문구와 클릭, 입력 결과를 검증한다.
+- 번역 파일은 언어마다 키 구조가 같은지 검증한다.
+- 타입만 있는 `*.types.ts`에는 테스트를 만들지 않는다.
+
+```ts
+import { describe, expect, it } from "vitest";
+import { formatJson } from "./json";
+
+describe("formatJson", () => {
+  it("rejects blank input", () => {
+    expect(formatJson("")).toEqual({ ok: false, reason: "empty", line: 1, column: 1 });
+  });
+});
+```

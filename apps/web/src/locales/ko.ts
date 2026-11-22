@@ -1,0 +1,42 @@
+import type { LocaleCatalog } from "./types";
+
+export const ko = {
+  shell: {
+    homeLabel: "DevOps Toolkit 홈",
+    appearance: "화면 테마",
+    language: "언어",
+    system: "시스템 설정 따르기",
+    light: "라이트 모드",
+    dark: "다크 모드",
+    korean: "한국어",
+    english: "English",
+    privacy: "브라우저 안에서 로컬 처리",
+  },
+  home: {
+    documentTitle: "DevOps Toolkit",
+    eyebrow: "매일 쓰는 개발 도구를 한곳에",
+    title: "DevOps Toolkit",
+    description: "필요한 도구를 빠르고 편하게.",
+    ready: "JSON Formatter를 바로 쓸 수 있어요.",
+    open: "JSON Formatter 열기",
+    next: "다음은 Unix Timestamp와 UUID Generator입니다.",
+  },
+  jsonFormatter: {
+    documentTitle: "JSON Formatter · DevOps Toolkit",
+    eyebrow: "브라우저 안에서 처리",
+    title: "JSON Formatter",
+    description: "JSON을 읽기 쉽게 정리하거나 한 줄로 줄입니다.",
+    format: "정리",
+    minify: "압축",
+    copy: "복사",
+    clear: "지우기",
+    placeholder: "JSON을 붙여 넣으세요",
+    label: "JSON 입력",
+    empty: "JSON을 먼저 붙여 넣으세요.",
+    formatted: "정리했습니다.",
+    minified: "한 줄로 줄였습니다.",
+    copied: "복사했습니다.",
+    copyFailed: "복사하지 못했습니다.",
+    invalid: "{line}행 {column}열을 확인하세요.",
+  },
+} satisfies LocaleCatalog;

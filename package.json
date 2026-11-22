@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "pnpm --filter @devops-toolkit/web dev",
     "build": "pnpm --filter @devops-toolkit/web build",
-    "preview": "pnpm --filter @devops-toolkit/web preview"
+    "preview": "pnpm --filter @devops-toolkit/web preview",
+    "test": "pnpm --filter @devops-toolkit/web test"
   }
 }
