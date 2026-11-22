@@ -26,6 +26,54 @@ describe("JsonFormatterPage", () => {
     await user.click(screen.getByRole("button", { name: "정리" }));
     expect(editor()).toHaveValue('{"a":1,}');
     expect(screen.getByRole("status")).toHaveTextContent("1행 8열을 확인하세요.");
+    expect(screen.getByTestId("json-error-mark")).toHaveTextContent("}");
+    expect(screen.getAllByTestId("json-error-arrow")).toHaveLength(1);
+
+    fireEvent.change(editor(), { target: { value: '{\n  "a": 1,\n}' } });
+    await user.click(screen.getByRole("button", { name: "정리" }));
+    expect(screen.getByTestId("json-error-mark")).toHaveTextContent("}");
+
+    fireEvent.change(editor(), { target: { value: '{"ok":true}' } });
+    expect(screen.queryByTestId("json-error-mark")).not.toBeInTheDocument();
+  });
+
+  it("marks an unquoted value instead of the first column", async () => {
+    const user = userEvent.setup();
+    render(<JsonFormatterPage locale="ko" />);
+    fireEvent.change(editor(), { target: { value: '{\n  "도로시": 오즈로 돌아가고 싶어요"\n}' } });
+
+    await user.click(screen.getByRole("button", { name: "정리" }));
+
+    expect(screen.getByRole("status")).toHaveTextContent("2행");
+    expect(screen.getByRole("status")).not.toHaveTextContent("1행 1열");
+    expect(screen.getByTestId("json-error-mark")).toHaveTextContent("오");
+    expect(screen.getAllByTestId("json-error-arrow")).toHaveLength(1);
+  });
+
+  it("marks only the line where a quote is left open", async () => {
+    const user = userEvent.setup();
+    render(<JsonFormatterPage locale="ko" />);
+    fireEvent.change(editor(), {
+      target: { value: '{\n  "한 줄 배열: [\n    "나무위키는",\n    "누구나"\n  ]\n}' },
+    });
+
+    await user.click(screen.getByRole("button", { name: "정리" }));
+
+    expect(screen.getAllByTestId("json-error-arrow")).toHaveLength(1);
+    expect(screen.getByRole("status")).toHaveTextContent("2행 13열을 확인하세요.");
+    expect(screen.getByRole("status")).not.toHaveTextContent("4행");
+  });
+
+  it("marks every broken line with an arrow", async () => {
+    const user = userEvent.setup();
+    render(<JsonFormatterPage locale="ko" />);
+    fireEvent.change(editor(), { target: { value: '{\n  "a": 오즈,\n  "b": 진짜\n}' } });
+
+    await user.click(screen.getByRole("button", { name: "정리" }));
+
+    expect(screen.getAllByTestId("json-error-arrow")).toHaveLength(2);
+    expect(screen.getAllByTestId("json-error-mark").map((mark) => mark.textContent)).toEqual(["오", "진"]);
+    expect(screen.getByRole("status")).toHaveTextContent("2행 8열, 3행 8열을 확인하세요.");
   });
 
   it("asks for JSON before formatting or copying an empty editor", async () => {

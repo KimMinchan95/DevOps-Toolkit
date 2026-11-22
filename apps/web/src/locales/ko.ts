@@ -38,5 +38,7 @@ export const ko = {
     copied: "복사했습니다.",
     copyFailed: "복사하지 못했습니다.",
     invalid: "{line}행 {column}열을 확인하세요.",
+    invalidItem: "{line}행 {column}열",
+    invalidMany: "{places}을 확인하세요.",
   },
 } satisfies LocaleCatalog;

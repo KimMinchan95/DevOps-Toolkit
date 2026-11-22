@@ -7,7 +7,7 @@ export type EditorStatus =
   | { kind: "copied" }
   | { kind: "empty" }
   | { kind: "copy-failed" }
-  | { kind: "invalid"; line: number; column: number };
+  | { kind: "invalid"; errors: { line: number; column: number }[] };
 
 export type JsonFormatterPageProps = {
   locale: "ko" | "en";

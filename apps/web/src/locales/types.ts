@@ -36,5 +36,7 @@ export type LocaleCatalog = {
     copied: string;
     copyFailed: string;
     invalid: string;
+    invalidItem: string;
+    invalidMany: string;
   };
 };

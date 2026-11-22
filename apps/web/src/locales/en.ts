@@ -38,5 +38,7 @@ export const en = {
     copied: "Copied.",
     copyFailed: "Couldn't copy.",
     invalid: "Check line {line}, column {column}.",
+    invalidItem: "line {line}, column {column}",
+    invalidMany: "Check {places}.",
   },
 } satisfies LocaleCatalog;
